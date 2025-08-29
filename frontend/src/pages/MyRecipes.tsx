@@ -1,18 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
+import { mockRecipes } from '../mockData';
 
 const MyRecipes: React.FC = () => {
-  // Placeholder para receitas do usuário
-  const userRecipes = [
-    {
-      id: 1,
-      title: "Minha Receita 1",
-      description: "Descrição da receita 1.",
-      image: "/placeholder.jpg"
-    },
-    // Adicione mais receitas conforme necessário
-  ];
+  // Usando dados mockados para receitas do usuário
+  const userRecipes = mockRecipes;
 
   return (
     <div className="container py-5">
@@ -28,10 +21,17 @@ const MyRecipes: React.FC = () => {
             <div key={recipe.id} className="col-md-4 mb-4">
               <div className="card h-100 shadow-sm">
                 <img src={recipe.image} className="card-img-top" alt={recipe.title} style={{ height: '200px', objectFit: 'cover' }} />
-                <div className="card-body">
+                <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{recipe.title}</h5>
-                  <p className="card-text">{recipe.description}</p>
-                  <Button text="Editar" variant="primary" size="sm" />
+                  <p className="card-text flex-grow-1">{recipe.description}</p>
+                  <div className="d-flex justify-content-between align-items-center mt-auto">
+                    <small className="text-muted">
+                      <span role="img" aria-label="clock">⏱️</span> {recipe.time} | <span role="img" aria-label="servings">🍽️</span> {recipe.servings}
+                    </small>
+                    <Link to={`/receita/${recipe.id}`}>
+                      <Button text="Ver Receita" variant="primary" size="sm" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
