@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ActionMenu from './ActionMenu';
 
 const Header: React.FC = () => {
   return (
@@ -23,17 +24,9 @@ const Header: React.FC = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Início</a>
+              <a className="nav-link" href="/receitas">Minhas Receitas</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/receitas">Receitas</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/sobre">Sobre</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contato">Contato</a>
-            </li>
+            <ActionMenu />
           </ul>
         </div>
       </div>
