@@ -4,7 +4,10 @@ import ActionMenu from './ActionMenu';
 
 const Header: React.FC = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4">
+    <nav
+      className="navbar navbar-expand-lg navbar-light shadow-sm"
+      style={{ backgroundColor: 'rgba(255, 255, 255, 1)' }}
+    >
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/">
           <span role="img" aria-label="chef" style={{ fontSize: '1.8rem', marginRight: '8px' }}>👨‍🍳</span>
