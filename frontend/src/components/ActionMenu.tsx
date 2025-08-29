@@ -15,7 +15,7 @@ const ActionMenu: React.FC = () => {
       </a>
       <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
         <li><a className="dropdown-item" href="/perfil">Meu Perfil</a></li>
-        <li><a className="dropdown-item" href="/configuracoes">Configurações</a></li>
+        <li><a className="dropdown-item" href="/minhas-receitas">Minhas Receitas</a></li>
         <li><hr className="dropdown-divider" /></li>
         <li><a className="dropdown-item" href="/logout">Sair</a></li>
       </ul>

@@ -23,9 +23,6 @@ const Header: React.FC = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="/receitas">Minhas Receitas</a>
-            </li>
             <ActionMenu />
           </ul>
         </div>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface RecipeCardProps {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -8,7 +10,7 @@ interface RecipeCardProps {
   servings: number;
 }
 
-const RecipeCard: React.FC<RecipeCardProps> = ({ title, description, image, time, servings }) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ id, title, description, image, time, servings }) => {
   return (
     <div className="card h-100 shadow-sm">
       <img src={image} className="card-img-top" alt={title} style={{ height: '200px', objectFit: 'cover' }} />
@@ -19,7 +21,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ title, description, image, time
           <small className="text-muted">
             <span role="img" aria-label="clock">⏱️</span> {time} | <span role="img" aria-label="servings">🍽️</span> {servings}
           </small>
-          <button className="btn btn-success btn-sm">Ver Receita</button>
+          <Link to={`/receita/${id}`} className="btn btn-success btn-sm">Ver Receita</Link>
         </div>
       </div>
     </div>
