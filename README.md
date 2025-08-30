@@ -20,7 +20,7 @@
   vagrant destroy
 ```
 
-- Para acessar o site, entre no 
+- Para acessar o site, entre no ip ```192.168.56.9```
 
 ### Manual Setup
 
