@@ -2,6 +2,28 @@
 
 ## Setup para VMs
 
+### Setup with Vagrant
+
+- Para subir o ambiente use o comando:
+```sh
+  vagrant up
+```
+
+- Para conectar no terminal de uma das máquinas: 
+  Os nomes de cada vm estam no Vagrantfile.
+```sh
+  vagrant ssh <vmname>
+```
+
+- Para derrubar o ambiente use o comando: 
+```sh
+  vagrant destroy
+```
+
+- Para acessar o site, entre no 
+
+### Manual Setup
+
 - Instalaçao dos requerimentos:
   ```sh
   sudo apt update
@@ -67,7 +89,7 @@
         enp0s8:
           dhcp4: no
           addresses:
-            - 192.168.10.101/24
+            - 192.168.56.10/24
       version: 2
     ```
     
@@ -78,7 +100,7 @@
         enp0s3:
           dhcp4: no
           addresses:
-            - 192.168.10.102/24
+            - 192.168.56.11/24
     version: 2
     ```
     
@@ -89,6 +111,6 @@
         enp0s3:
           dhcp4: no
           addresses:
-            - 192.168.10.103/24
+            - 192.168.56.12/24
     version: 2
     ```
