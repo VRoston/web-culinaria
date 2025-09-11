@@ -7,3 +7,4 @@ npm install #--no-bin-links
 npm run build
 npm start &
 chown -R vagrant:vagrant /home/vagrant/web-culinaria/frontend
+ip link set eth0 down || true

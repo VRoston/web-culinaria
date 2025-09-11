@@ -7,3 +7,4 @@ pip install -r /home/vagrant/web-culinaria/backend/requirements.txt
 mkdir -p /home/vagrant/web-culinaria/logs
 chown -R vagrant:vagrant /home/vagrant/web-culinaria/backend /home/vagrant/web-culinaria/logs
 nohup flask run --host=192.168.0.12 > ../logs/app.log 2>&1 &
+ip link set eth0 down || true
