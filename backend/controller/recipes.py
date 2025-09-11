@@ -1,5 +1,5 @@
 from flask import jsonify
-from .. import database as db
+import database as db
 import sqlite3
 
 def index():

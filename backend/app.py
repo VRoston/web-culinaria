@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from .controller import recipes as r
+from controller import recipes as r
 
 app = Flask(__name__)
 app.config['SECRET_KEY']='supersecretkey'

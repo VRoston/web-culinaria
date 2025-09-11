@@ -5,5 +5,6 @@ cd /home/vagrant/web-culinaria/frontend
 rm package-lock.json
 npm install #--no-bin-links
 npm run build
-apt-get install python3-pip -y
-ip link set eth0 down
+npm start &
+chown -R vagrant:vagrant /home/vagrant/web-culinaria/frontend
+ip link set eth0 down || true
