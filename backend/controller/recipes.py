@@ -14,9 +14,6 @@ def index():
 
     recipes = cur.fetchall()
 
-    cur.exit()
-    conn.exit()
-
     data = []
     for r in recipes:
         data.append({
@@ -42,9 +39,6 @@ def show(id: int):
 
     recipe = cur.fetchone()
 
-    cur.exit()
-    conn.exit()
-
     data = {
         'id': recipe['id'],
         'title': recipe['title'],
@@ -62,16 +56,16 @@ def create():
     """
     Creates an instance recipe 
     """
-    title = request.form.get('title')
-    description = request.form.get('description')
-    preparation_time = request.form.get('preparation_time')
-    servings = request.form.get('servings')
-    ingredients = request.form.get('ingredients')
-    instructions = request.form.get('instructions')
-    image_path = request.form.get('image_path')
+    title = request.json.get('title')
+    description = request.json.get('description')
+    preparation_time = request.json.get('preparation_time')
+    servings = request.json.get('servings')
+    ingredients = request.json.get('ingredients')
+    instructions = request.json.get('instructions')
+    image_path = request.json.get('image_path')
 
     if not (title or description or preparation_time or servings or ingredients or instructions or image_path):
-        return jsonify({'error': 'all fields are required'})
+        return jsonify({'error': 'all fields are required'}), 400
 
     conn = db.connect()
     cur = conn.cursor()
@@ -85,8 +79,8 @@ def create():
         conn.commit()
     except:
         conn.rollback()
+        return jsonify({'error': 'An error occurred while creating the recipe.'}), 500
     finally:
-        cur.exit()
-        conn.exit()
+        conn.close()
 
     return jsonify({'success': 'Successfully created the recipe.'})

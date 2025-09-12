@@ -10,21 +10,45 @@ const CreateRecipe: React.FC = () => {
   const [time, setTime] = useState('');
   const [servings, setServings] = useState<number>(1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newRecipe = {
-      id: Date.now().toString(),
       title,
       description,
       image,
       time,
       servings,
-      ingredients: ingredients.split('\n').filter(item => item.trim() !== ''),
-      instructions: instructions.split('\n').filter(item => item.trim() !== '')
+      ingredients,
+      instructions,
     };
-    console.log('Nova receita criada:', newRecipe);
-    alert('Receita criada com sucesso!');
-    // Aqui você pode adicionar lógica para salvar no mock ou API
+
+    try {
+      const response = await fetch('/api/recipes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRecipe),
+      });
+
+      if (response.ok) {
+        alert('Receita criada com sucesso!');
+        // Limpar formulário após sucesso
+        setTitle('');
+        setDescription('');
+        setIngredients('');
+        setInstructions('');
+        setImage('');
+        setTime('');
+        setServings(1);
+      } else {
+        const error = await response.json();
+        alert('Erro: ' + error.error);
+      }
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+      alert('Erro ao conectar com a API');
+    }
   };
 
   return (
