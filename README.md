@@ -6,7 +6,7 @@
 
 - Para subir o ambiente use o comando:
 ```sh
-  vagrant up
+  .\up-vms.ps1
 ```
 
 - Para conectar no terminal de uma das máquinas: 
