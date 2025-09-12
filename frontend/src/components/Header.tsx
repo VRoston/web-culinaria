@@ -1,8 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ActionMenu from './ActionMenu';
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light shadow-sm"
@@ -26,7 +30,13 @@ const Header: React.FC = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <ActionMenu />
+            <li className="nav-item">
+              <Button
+                text="Criar Receita"
+                onClick={() => navigate('/criar-receita')}
+                variant="primary"
+              />
+            </li>
           </ul>
         </div>
       </div>

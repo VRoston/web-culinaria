@@ -11,7 +11,7 @@ def recipes():
     return r.index()
 
 @app.route('/api/recipe/<int:id_recipe>', methods=['GET'])
-def recipes(id_recipe):
+def recipe(id_recipe):
     return r.show(id_recipe)
 
 @app.route('/api/oquevcquiser', methods=['GET'])
