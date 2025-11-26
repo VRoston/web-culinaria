@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "main", "unit-test-and-git-workflows" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "unit-test-and-git-workflows" ]
 
 jobs:
   build-and-test:
