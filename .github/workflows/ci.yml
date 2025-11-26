@@ -29,6 +29,7 @@ jobs:
       # Usamos 'legacy-peer-deps' para evitar aquele erro de conflito do React 19 que vimos antes
       - name: Instalar Dependências
         run: |
+          cd ./frontend
           echo $(pwd)
           npm ci --legacy-peer-deps
 
