@@ -28,7 +28,9 @@ jobs:
       # 3. Instala as dependências
       # Usamos 'legacy-peer-deps' para evitar aquele erro de conflito do React 19 que vimos antes
       - name: Instalar Dependências
-        run: npm ci --legacy-peer-deps
+        run: |
+          echo $(pwd)
+          npm ci --legacy-peer-deps
 
       # 4. Roda os Testes (Unitários e Integração)
       # Como seu package.json já tem --watchAll=false, ele vai rodar uma vez e finalizar
