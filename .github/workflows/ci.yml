@@ -30,16 +30,19 @@ jobs:
       - name: Instalar Dependências
         run: |
           cd ./frontend
-          echo $(pwd)
           npm ci --legacy-peer-deps
 
       # 4. Roda os Testes (Unitários e Integração)
       # Como seu package.json já tem --watchAll=false, ele vai rodar uma vez e finalizar
       # Isso valida os requisitos técnicos de testes [cite: 24, 25]
       - name: Executar Testes
-        run: npm test
+        run: |
+          cd ./frontend
+          npm test
 
       # 5. Verifica se o projeto compila (Build de Produção)
       # Importante para garantir que não há erros de Typescript impedindo o deploy
       - name: Build do Projeto
-        run: npm run build
+        run: |
+          cd ./frontend
+          npm run build
