@@ -3,9 +3,9 @@ name: CI Pipeline - Frontend React
 # Gatilhos: Roda quando faz push na main ou abre um Pull Request para a main
 on:
   push:
-    branches: [ "main", "unit-test-and-git-workflows" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "unit-test-and-git-workflows" ]
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
