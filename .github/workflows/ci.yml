@@ -11,6 +11,10 @@ jobs:
   build-and-test:
     # O "sandbox" exigido no documento [cite: 15]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./frontend
 
     steps:
       # 1. Baixa o seu código para a máquina virtual
@@ -27,9 +31,7 @@ jobs:
       # 3. Instala as dependências
       # Usamos 'legacy-peer-deps' para evitar aquele erro de conflito do React 19 que vimos antes
       - name: Instalar Dependências
-        run: |
-          cd frontend
-          npm ci --legacy-peer-deps
+        run: npm ci --legacy-peer-deps
 
       # 4. Roda os Testes (Unitários e Integração)
       # Como seu package.json já tem --watchAll=false, ele vai rodar uma vez e finalizar
