@@ -12,7 +12,7 @@ type Recipe = {
   image_path: string;
 };
 
-const Recipe: React.FC = () => {
+const RecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
@@ -98,4 +98,4 @@ const Recipe: React.FC = () => {
   );
 };
 
-export default Recipe;
+export default RecipePage;
