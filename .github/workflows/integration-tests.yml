@@ -34,5 +34,5 @@ jobs:
       - name: Install frontend dependencies and run tests
         working-directory: ./frontend
         run: |
-          npm ci
+          npm install --no-audit --no-fund
           npm test --silent
