@@ -1,0 +1,63 @@
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    image: web-culinaria-backend:1.0-dev
+    container_name: web-culinaria-backend
+
+    volumes:
+      - ./database:/database/
+      - ./backend:/app/:ro
+
+    env_file:
+      - .env
+
+    restart: unless-stopped
+
+    networks:
+      - web-culinaria-net
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.dev
+    image: web-culinaria-frontend:1.0-dev
+    container_name: web-culinaria-frontend
+
+    depends_on:
+      - backend
+
+    volumes:
+      - ./frontend:/app/
+      - /app/node_modules
+
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+    restart: unless-stopped
+
+    networks:
+      - web-culinaria-net
+
+  proxy:
+    image: nginx:1.29.3-alpine
+    container_name: web-culinaria-proxy
+
+    depends_on:
+      - backend
+      - frontend
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+
+    restart: unless-stopped
+
+    networks:
+      - web-culinaria-net
+
+networks:
+  web-culinaria-net:
