@@ -1,0 +1,48 @@
+name: Integration Tests
+
+# Gatilho: roda em push e pull_request para a branch `main`.
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Run backend and frontend integration tests
+    runs-on: ubuntu-latest
+    steps:
+      # Baixa o código do repositório para o runner
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Configura Python (usado para rodar os testes do backend)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Instala dependências do backend e executa pytest.
+      # Executa no diretório ./backend para isolar contexto.
+      - name: Install backend dependencies and run pytest
+        working-directory: ./backend
+        run: |
+          # Atualiza pip para evitar problemas de instalação
+          python -m pip install --upgrade pip
+          # Instala dependências do backend listadas em requirements.txt
+          pip install -r requirements.txt
+          # Roda os testes Python (saída mínima)
+          pytest -q
+
+      # Configura Node.js para os testes do frontend
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Instala dependências do frontend e executa os testes Jest.
+      - name: Install frontend dependencies and run tests
+        working-directory: ./frontend
+        run: |
+          npm install --no-audit --no-fund
+          npm test --silent
