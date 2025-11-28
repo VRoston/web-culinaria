@@ -10,6 +10,7 @@ interface RecipeCardProps {
   servings: number;
 }
 
+
 const RecipeCard: React.FC<RecipeCardProps> = ({ id, title, description, image, time, servings }) => {
   return (
     <div className="card h-100 shadow-sm">
